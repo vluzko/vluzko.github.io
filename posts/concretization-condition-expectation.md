@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+-- tags: math, probability, concretization
+=======
 ---
 tags: 
   math
@@ -11,6 +14,10 @@ P(A | B) = \frac{P(A \cap B)}{P(B)}
 $$
 formula.
 
+Instead we use a much more abstract formulation in terms
+
+
+##
 Instead we use a much more abstract formulation where we condition on an entire $\sigma$-field
 
 ## Conditioning on a \(sigma\)-field
@@ -20,6 +27,4 @@ $$
 
 $$
 
-## Conditioning an event
-
-##
+## Conditioning on an event
