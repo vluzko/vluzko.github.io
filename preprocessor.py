@@ -76,7 +76,7 @@ def get_template_ast() -> BeautifulSoup:
     navbar = ast.find('nav', {'id': 'navigation'})
 
     if PROD:
-        link_prefix = '/'
+        link_prefix = ''
     else:
         link_prefix = str(LOCAL_PREFIX.absolute())
 
