@@ -9,7 +9,13 @@ from sys import argv
 from typing import Tuple
 
 
-OUTPUT_DIR = Path(__file__).parent / 'posts'
+LOCAL_PREFIX = Path(__file__).parent
+SOURCE_DIR = LOCAL_PREFIX / 'posts' / 'markdown'
+OUTPUT_DIR = LOCAL_PREFIX / 'posts'
+TEMPLATE = LOCAL_PREFIX / 'template.html'
+BLOG_INDEX = LOCAL_PREFIX / 'blog.html'
+GITHUB_PREFIX = '/vluzko.github.io/'
+PROD = False
 
 
 def build_index():
@@ -23,18 +29,18 @@ def parse_meta(text: str) -> dict:
 
 
 def parse_metadata(text: str) -> Tuple[dict, str]:
-    open_close = re.compile(r'^(---\n(.*)\n---\n)?(.*)')
-    match = re.match(open_close, text)
-    assert match is not None
-    print(match.groups())
-    groups = match.groups()
-    assert len(groups) == 3
-    if groups[0] is None:
-        assert groups[1] is None
-        return {}, groups[2]
+    start_end = re.compile(r'---\n')
+    first = re.search(start_end, text)
+    if first is None:
+        return {}, text
     else:
-        metadata = parse_meta(groups[1])
-        return metadata, groups[2]
+        second = re.search(start_end, text[4:])
+        assert second is not None
+        text_start = 4 + second.end()
+        meta_text = text[4:second.start() + 4]
+        metadata = parse_meta(meta_text)
+        main_text = text[text_start:]
+        return metadata, main_text
 
 
 def add_mathjax(ast: BeautifulSoup) -> BeautifulSoup:
@@ -50,22 +56,74 @@ def add_mathjax(ast: BeautifulSoup) -> BeautifulSoup:
     return ast
 
 
-def generate_nav_page():
-    raise NotImplementedError
-
-
-def parse_post(post: Path):
+def process_post(post: Path, link_start: str='/home/vincent') -> Tuple[dict, BeautifulSoup]:
     text = post.open().read()
     meta_data, remaining = parse_metadata(text)
     html = mistune.markdown(remaining)
+    test_ast = BeautifulSoup(html, 'html.parser')
+
+    page = get_template_ast()
+    content_div = page.find('div', {'id': 'content0'})
+    content_div.append(test_ast)
+
+    return meta_data, page
+
+
+def get_template_ast() -> BeautifulSoup:
+    html = TEMPLATE.open().read()
     ast = BeautifulSoup(html, 'html.parser')
 
-    with_math = add_mathjax(ast)
-    import pdb
-    pdb.set_trace()
+    navbar = ast.find('nav', {'id': 'navigation'})
+
+    if PROD:
+        link_prefix = '/vluzko.github.io'
+    else:
+        link_prefix = str(LOCAL_PREFIX.absolute())
+
+    for link in navbar.findAll('a'):
+        href = link.attrs['href']
+        new_href = f'{link_prefix}/{href}'
+        link.attrs['href'] = new_href
+
+
+    return ast
+
+
+def generate_post_list():
+    all_meta = {}
+    for f in SOURCE_DIR.glob('**/*.md'):
+        meta_data, post_ast = process_post(f)
+
+        output_path = Path(OUTPUT_DIR, *f.parts[2:]).with_suffix('.html')
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.open('w+').write(post_ast.prettify())
+        meta_data['link'] = str(output_path)
+        all_meta[f] = meta_data
+
+    return all_meta
+
+
+def generate_nav_page(post_meta: dict):
+    ast = get_template_ast()
+    content_div = ast.find('div', {'id': 'content0'})
+    posts = ast.new_tag('ul')
+    for k, v in post_meta.items():
+        link = ast.new_tag('a', href= v['link'])
+        link.string = v['title']
+        l_item = ast.new_tag('li')
+        l_item.append(link)
+        posts.append(l_item)
+    content_div.append(posts)
+    BLOG_INDEX.open('w+').write(ast.prettify())
+
+
+def generate_blog():
+    post_meta = generate_post_list()
+    generate_nav_page(post_meta)
 
 
 if __name__ == '__main__':
-    p = Path(argv[1])
-    parse_post(p)
+    if len(argv) > 1 and argv[1] == 'dev':
+        PROD = False
+    generate_blog()
 

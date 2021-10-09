@@ -1,0 +1,65 @@
+<html lang="en">
+ <head>
+  <title>
+   Template
+  </title>
+  <link href="/vluzko.github.io/main.css" rel="stylesheet" type="text/css"/>
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js" type="text/javascript">
+   MathJax.Hub.Config({
+                extensions: ["tex2jax.js"],
+                jax: ["input/TeX", "output/HTML-CSS"],
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                },
+                "HTML-CSS": { availableFonts: ["TeX"] }
+            });
+  </script>
+  <meta charset="utf-8"/>
+ </head>
+ <body>
+  <nav classname="navbar" id="navigation">
+   <ul>
+    <li>
+     <a href="/home/vincent/projects/vluzko.github.io/index.html">
+      Home page
+     </a>
+    </li>
+    <li>
+     <a href="/home/vincent/projects/vluzko.github.io/blog.html">
+      Blog
+     </a>
+    </li>
+   </ul>
+  </nav>
+  <div classname="content" id="content0">
+   <h2>
+    Ill Luck Paradox
+   </h2>
+   <p>
+    This is one of my favorite counterintuitive results. I got it from
+    <a href="https://www.goodreads.com/book/show/2787607-counterexamples-in-probability-and-statistics?ac=1&amp;from_search=true&amp;qid=qjY2rhiM71&amp;rank=4">
+     Counterexamples in Probability and Statistics
+    </a>
+    , who got it from
+    <a href="https://www.goodreads.com/book/show/2378167.An_Introduction_to_Probability_Theory_and_Its_Applications_Volume_1?ac=1&amp;from_search=true&amp;qid=Sm7rvHRTMn&amp;rank=3">
+     Feller Volume 1
+    </a>
+    .
+   </p>
+   <p>
+    We have a sequence of continuous, iid random variables $\mathcal{X} = [X_1, X_2, \ldots]$. We'll think of these as identical marathon runners running in sequence (technically our variables can be negative and as far as I know marathon runners cannot get negative times but let's ignore that).
+   </p>
+   <p>
+    Define the random variable $R_w$ as the smallest $i &gt; 1$ such that $X_i &gt; X_1$. Define $R_l$ similarly, but with $X_i &lt; X_1$. If we think of $X_1$ as the first marathon runner, then $R_w$ is the first runner to beat $X_1$ and $R_l$ is the first runner to lose to $X_1$.
+   </p>
+   <p>
+    Then $E[R_h] = E[R_l] = \infty$. However, $P(R_h = 2 | R_l = 2) = 1$.
+   </p>
+   <h3>
+    Proof
+   </h3>
+  </div>
+ </body>
+</html>
