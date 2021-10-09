@@ -10,7 +10,8 @@ from typing import Tuple
 
 
 LOCAL_PREFIX = Path(__file__).parent
-SOURCE_DIR = LOCAL_PREFIX / 'posts' / 'markdown'
+PAGES_DIR = LOCAL_PREFIX / 'pages'
+BLOG_SOURCE = LOCAL_PREFIX / 'posts' / 'markdown'
 OUTPUT_DIR = LOCAL_PREFIX / 'posts'
 TEMPLATE = LOCAL_PREFIX / 'template.html'
 BLOG_INDEX = LOCAL_PREFIX / 'blog.html'
@@ -56,7 +57,7 @@ def add_mathjax(ast: BeautifulSoup) -> BeautifulSoup:
     return ast
 
 
-def process_post(post: Path, link_start: str='/home/vincent') -> Tuple[dict, BeautifulSoup]:
+def process_post(post: Path) -> Tuple[dict, BeautifulSoup]:
     text = post.open().read()
     meta_data, remaining = parse_metadata(text)
     html = mistune.markdown(remaining)
@@ -67,6 +68,21 @@ def process_post(post: Path, link_start: str='/home/vincent') -> Tuple[dict, Bea
     content_div.append(test_ast)
 
     return meta_data, page
+
+
+def process_page(post: Path, page_name: str) -> BeautifulSoup:
+    text = post.open().read()
+    html = mistune.markdown(text)
+    content_ast = BeautifulSoup(html, 'html.parser')
+
+    page = get_template_ast()
+    content_div = page.find('div', {'id': 'content0'})
+    content_div.append(content_ast)
+
+    title_element = page.find('title')
+    title_element.string = page_name
+
+    return page
 
 
 def get_template_ast() -> BeautifulSoup:
@@ -91,7 +107,7 @@ def get_template_ast() -> BeautifulSoup:
 
 def generate_post_list():
     all_meta = {}
-    for f in SOURCE_DIR.glob('**/*.md'):
+    for f in BLOG_SOURCE.glob('**/*.md'):
         meta_data, post_ast = process_post(f)
 
         output_path = Path(OUTPUT_DIR, *f.parts[2:]).with_suffix('.html')
@@ -103,7 +119,7 @@ def generate_post_list():
     return all_meta
 
 
-def generate_nav_page(post_meta: dict):
+def generate_blog_page(post_meta: dict):
     ast = get_template_ast()
     content_div = ast.find('div', {'id': 'content0'})
     posts = ast.new_tag('ul')
@@ -114,16 +130,29 @@ def generate_nav_page(post_meta: dict):
         l_item.append(link)
         posts.append(l_item)
     content_div.append(posts)
+
+    title_element = ast.find('title')
+    title_element.string = 'Blog'
+
     BLOG_INDEX.open('w+').write(ast.prettify())
 
 
-def generate_blog():
+def generate_pages():
+    for f in PAGES_DIR.glob('*.md'):
+        page_name = f.stem.capitalize()
+        page_ast = process_page(f, page_name)
+        output_path = Path(LOCAL_PREFIX, f.stem).with_suffix('.html')
+        output_path.open('w+').write(page_ast.prettify())
+
+
+def generate_site():
     post_meta = generate_post_list()
-    generate_nav_page(post_meta)
+    generate_pages()
+    generate_blog_page(post_meta)
 
 
 if __name__ == '__main__':
     if len(argv) > 1 and argv[1] == 'dev':
         PROD = False
-    generate_blog()
+    generate_site()
 
