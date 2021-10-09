@@ -15,7 +15,7 @@ OUTPUT_DIR = LOCAL_PREFIX / 'posts'
 TEMPLATE = LOCAL_PREFIX / 'template.html'
 BLOG_INDEX = LOCAL_PREFIX / 'blog.html'
 GITHUB_PREFIX = '/vluzko.github.io/'
-PROD = False
+PROD = True
 
 
 def build_index():
