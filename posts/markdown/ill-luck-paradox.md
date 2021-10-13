@@ -13,7 +13,15 @@ We have a sequence of continuous, iid random variables $\mathcal{X} = [X_1, X_2,
 
  Define the random variable $R_w$ as the smallest $i > 1$ such that $X_i > X_1$. Define $R_l$ similarly, but with $X_i < X_1$. If we think of $X_1$ as the first marathon runner, then $R_w$ is the first runner to beat $X_1$ and $R_l$ is the first runner to lose to $X_1$.
 
-Then $E[R_h] = E[R_l] = \infty$. However, $P(R_h = 2 | R_l = 2) = 1$.
+Then $E[R_h] = E[R_l] = \infty$. However, $P(R_h = 2 | R_l = 2) = 1$. So it "should" take forever for a record to be set, but at least one record (either winning or losing) is guaranteed to be set immediately.
 
 
 ### Proof
+Consider the first $n$ runners. Since they're all identical, the probability that the last runner is the fastest and the first runner is the second fastest is just the number of permutations that start with $\(n, 1\)$ over the total number of permutations, i.e. it's $(n-2)! / n! = 1 / n(n-1)$.
+
+This is the probability that $R_h = n$ so the expectation is:
+
+$$
+E[R_h] = \sum n \frac{1}{n(n-1)} = \sum \frac{1}{n-1}
+$$
+This is of course a harmonic series, so it diverges and $E[R_h] = \infty$.
