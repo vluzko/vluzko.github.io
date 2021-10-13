@@ -122,7 +122,7 @@ def generate_post_list():
 def generate_blog_page(post_meta: dict):
     ast = get_template_ast()
     content_div = ast.find('div', {'id': 'content0'})
-    posts = ast.new_tag('ul')
+    posts = ast.new_tag('ul', id='blog-index')
     for k, v in post_meta.items():
         link = ast.new_tag('a', href= v['link'])
         link.string = v['title']
