@@ -1,18 +1,33 @@
 ---
+title: "PAC Causal Discovery Part 1"
 tags:
-  - math
-  - probability
-  - statistical-learning-theory
+    - pac-causal-discovery
+    - math
+    - probability
+    - statistical-learning-theory
 ---
 
-## PAC Causal Discovery
+## PAC Causal Discovery Part 1
 
 I'm writing this mostly as practice for writing/editing the corresponding paper. Experience says I'm quite slow when it comes to academic writing, and I'm hoping an informal draft will help.
 
+### PAC Bounds
 In statistical learning theory, we frequently obtain *probably approximately correct* (PAC) bounds on learning algorithms. In other fields we usually just get approximation bounds, e.g. "if I approximate this analytic function with a Taylor series of this many terms my approximation error is at most this much". In machine learning these bounds are often unobtainable, because there's always some chance that you get an extremely weird sample and learn entirely the wrong function.
 
+- PAC formal definition
+- Links to some overview (eg the original paper)
+
+
+### Causal Discovery
 In causality theory, *causal discovery* is the problem of learning a causal graph (a graph of the causal relationships in the model) given samples from the model.
 
+- Structural causal model
+- Causal graph
+- Causal discovery
+    - Constraint based methods
+
+
+### Approximating Causal Graphs
 I'm interested in putting PAC bounds on causal discovery. The first problem with this is that it's ill-defined. What does it mean to approximate a graph?
 
 Often the performance of causal discovery algorithms is measured in terms of metrics on the graph (e.g. the Hamming distance). We could try to establish theoretical bounds on this distance, but I think this is incorrect / not measuring what we really care about, because it fails to take into account the *importance* of particular edges.

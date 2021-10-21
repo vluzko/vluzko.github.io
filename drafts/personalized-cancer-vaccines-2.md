@@ -1,6 +1,5 @@
 ---
 title: 'Cancer Vaccines Part 2 - Cancer Immunology'
-category: Biology
 tags:
   - biology
   - immunology
