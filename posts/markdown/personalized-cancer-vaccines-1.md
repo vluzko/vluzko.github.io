@@ -1,6 +1,6 @@
 ---
 title: 'Cancer Vaccines Part 1 - Basic Immunology'
-date: 2019-10-30
+date: 2019-10-28
 tags:
   - biology
   - immunology
@@ -8,13 +8,11 @@ tags:
 ---
 [Part 2]({%post_url 2019-10-30-cancer-vaccines-part-2 %}), [Part 3]({%post_url 2019-10-30-cancer-vaccines-part-3 %})
 
-In another life I worked on cancer vaccines. Specifically I wrote algorithms for designing personalized cancer vaccines.
+## Cancer Vaccines 1 - Immunology 001
 
-Caveat lector: I’m not a biologist of any kind. I spent lots of time around them and had to understand their work well enough to implement it in code, but still.
+For a few years, I worked at Moderna on their personalized cancer vaccine program. Of course I cannot talk about the specifics of Moderna's approach, but there are quite a few teams - industrial and academic - working on the problem, all with fairly similar approaches and I can talk about the overall methodology.
 
-The immune system is really complicated. Your immune system has to be able to selectively destroy all the bad things without destroying any of the good things; that requires a lot of information and a lot of specialized components.
-
-There are two parts of the human immune system: the innate immune system and the adaptive immune system. You can roughly think of these as “general” and “targeted”. The adaptive immune system is the one that learns to recognize specific pathogens, and targets them for destruction.
+There are two parts of the human immune system: the innate immune system and the adaptive immune system. You can roughly think of these as "general" and "targeted". The adaptive immune system, as its name suggests, adapts to novel pathogens and responds
 
 The rough process is this: every cell (pathogenic or otherwise) produces lots of proteins. Your cells only produce proteins from a very specific list of proteins. This list is determined by your DNA. That’s not all your DNA does, but part of it (the exome) determines what proteins your cells produce (1). So the adaptive immune system goes around looking for proteins that aren’t on the list, and then it murders everything making the forbidden proteins. We’ll refer to things on The List as “self”.
 
@@ -48,14 +46,12 @@ You also have multiple MHCs of each type. Normally you’ll have six class I MHC
 
 Which MHCs you have is determined genetically, so different populations have different distributions of particular types. For instance the MHC HLA-A*02:01 is present in something like 40% of the US population. This is very important from an epidemiology perspective, because different MHCs bind with different epitopes. A population that all has MHCs that bind to smallpox epitopes will be much more resistant than one with no smallpox-binding MHCs.
 
-If you’re lost, that’s okay. The important thing to remember is this:
-
 Protein in cells -> epitopes -> epitope/MHC complex -> T-cell -> immune response
 
 That basic pathway is what a lot of vaccines build on, and it’s what all personalized cancer vaccines build on.
 
 ------------------------------
-
+<!--
 1. If you took high school biology you probably learned that DNA -> mRNA -> protein, and that each gene (a segment of DNA) turns into one protein. This is mostly right, but it is a simplification. The relationship between genes and proteins isn’t one-to-one, but many-to-many.
 
 2. Well technically there might be cancers that only affect regulation but don’t change the actual proteins produced. I’m not aware of any though.
@@ -66,5 +62,5 @@ That basic pathway is what a lot of vaccines build on, and it’s what all perso
 
 5. The actual process of T-cell maturation and selection is complicated (like everything else) and I know very little about it.
 
-6. Probably. Maybe CD4+ T-cells do too, sometimes. It’s an area of active research.
+6. Probably. Maybe CD4+ T-cells do too, sometimes. It’s an area of active research. -->
 

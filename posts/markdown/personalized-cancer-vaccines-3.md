@@ -8,7 +8,7 @@ tags:
   - cancer
 ---
 
-[Part 1]({%post_url 2019-10-30-cancer-vaccines-part-1 %}), [Part 2]({%post_url 2019-10-30-cancer-vaccines-part-2 %})
+[Part 1](/posts/personalized-cancer-vaccines-1.html), [Part 2](/posts/personalized-cancer-vaccines-1.html)
 
 To recap: the immune system works by killing cells that produce non-self proteins, i.e. proteins that aren’t naturally produced by your cells.
 
@@ -76,7 +76,7 @@ I am going to be terrible and not talk about this. The manufacturing and deliver
 
 Step 4: Hope nothing goes wrong
 
-Okay, you’ve got your vaccine. You administer checkpoint inhibitor therapy to get the immune system working, and then you administer your vaccine. 
+Okay, you’ve got your vaccine. You administer checkpoint inhibitor therapy to get the immune system working, and then you administer your vaccine.
 
 You know what the cancer does? It mutates again to escape the immune system in some other way. Maybe it loses the genes for expressing class I MHC molecules, so the protein -> epitope -> MHC -> T-cell pathway is just completely broken. Maybe it takes advantage of a different immune checkpoint. Maybe it loses the mutations you targeted and gets new ones instead.
 
@@ -84,8 +84,7 @@ I don’t actually know how common this will be. I’m aware of research directi
 
 In conclusion: progress has been made, but cancer is an adaptable bitch and our superweapons still need work.
 
-1. In particular: immune cells (including T-cells) that have responded to an infection enter a different state. They stick around and are on high alert for some long period of time. It’s not so much that the immune system “memorizes” the infection as it is that there are a bunch of veteran immune cells sitting around waiting for that bastard infection to come back.
-
+<!-- 1. In particular: immune cells (including T-cells) that have responded to an infection enter a different state. They stick around and are on high alert for some long period of time. It’s not so much that the immune system “memorizes” the infection as it is that there are a bunch of veteran immune cells sitting around waiting for that bastard infection to come back.
 2. Meaning it will still be producing the same proteins your immune system learned to recognize from the vaccine.
 
 3. An obvious exception is the flu. The flu mutates so fast that you need a new vaccine every year. But you can still be confident that within a single year the flu will be stable enough that the vaccine will provide some protection. (I assume that there’s some protection from year to year too, but I don’t know how much).
@@ -104,5 +103,5 @@ In conclusion: progress has been made, but cancer is an adaptable bitch and our 
 
 10. This can happen in several ways. Some mutations work specifically by deactivating a protein (for instance by deactivating proteins that inhibit cell growth or reproduction). Other mutations aren’t actually part of the cancer’s function, and they just sort of show up because cancers are a mess.
 
-11. Remember that every patient has their own set of MHC molecules. They’re not unique, but it would be unusual to find two people with the exact same MHC molecules.
+11. Remember that every patient has their own set of MHC molecules. They’re not unique, but it would be unusual to find two people with the exact same MHC molecules. -->
 

@@ -115,17 +115,14 @@
      Part 3
     </a>
    </p>
+   <h2>
+    Cancer Vaccines 1 - Immunology 001
+   </h2>
    <p>
-    In another life I worked on cancer vaccines. Specifically I wrote algorithms for designing personalized cancer vaccines.
+    For a few years, I worked at Moderna on their personalized cancer vaccine program. Of course I cannot talk about the specifics of Moderna's approach, but there are quite a few teams - industrial and academic - working on the problem, all with fairly similar approaches and I can talk about the overall methodology.
    </p>
    <p>
-    Caveat lector: I’m not a biologist of any kind. I spent lots of time around them and had to understand their work well enough to implement it in code, but still.
-   </p>
-   <p>
-    The immune system is really complicated. Your immune system has to be able to selectively destroy all the bad things without destroying any of the good things; that requires a lot of information and a lot of specialized components.
-   </p>
-   <p>
-    There are two parts of the human immune system: the innate immune system and the adaptive immune system. You can roughly think of these as “general” and “targeted”. The adaptive immune system is the one that learns to recognize specific pathogens, and targets them for destruction.
+    There are two parts of the human immune system: the innate immune system and the adaptive immune system. You can roughly think of these as "general" and "targeted". The adaptive immune system, as its name suggests, adapts to novel pathogens and responds
    </p>
    <p>
     The rough process is this: every cell (pathogenic or otherwise) produces lots of proteins. Your cells only produce proteins from a very specific list of proteins. This list is determined by your DNA. That’s not all your DNA does, but part of it (the exome) determines what proteins your cells produce (1). So the adaptive immune system goes around looking for proteins that aren’t on the list, and then it murders everything making the forbidden proteins. We’ll refer to things on The List as “self”.
@@ -206,47 +203,24 @@
     Which MHCs you have is determined genetically, so different populations have different distributions of particular types. For instance the MHC HLA-A*02:01 is present in something like 40% of the US population. This is very important from an epidemiology perspective, because different MHCs bind with different epitopes. A population that all has MHCs that bind to smallpox epitopes will be much more resistant than one with no smallpox-binding MHCs.
    </p>
    <p>
-    If you’re lost, that’s okay. The important thing to remember is this:
-   </p>
-   <p>
     Protein in cells -&gt; epitopes -&gt; epitope/MHC complex -&gt; T-cell -&gt; immune response
    </p>
    <p>
     That basic pathway is what a lot of vaccines build on, and it’s what all personalized cancer vaccines build on.
    </p>
    <hr/>
-   <ol>
-    <li>
-     <p>
-      If you took high school biology you probably learned that DNA -&gt; mRNA -&gt; protein, and that each gene (a segment of DNA) turns into one protein. This is mostly right, but it is a simplification. The relationship between genes and proteins isn’t one-to-one, but many-to-many.
-     </p>
-    </li>
-    <li>
-     <p>
-      Well technically there might be cancers that only affect regulation but don’t change the actual proteins produced. I’m not aware of any though.
-     </p>
-    </li>
-    <li>
-     <p>
-      Never mind exactly what it does for now. Just know that it causes the immune system to focus specifically on cells producing that epitope.
-     </p>
-    </li>
-    <li>
-     <p>
-      If your cells are routinely failing you have an autoimmune disorder.
-     </p>
-    </li>
-    <li>
-     <p>
-      The actual process of T-cell maturation and selection is complicated (like everything else) and I know very little about it.
-     </p>
-    </li>
-    <li>
-     <p>
-      Probably. Maybe CD4+ T-cells do too, sometimes. It’s an area of active research.
-     </p>
-    </li>
-   </ol>
+   &lt;!--
+1. If you took high school biology you probably learned that DNA -&gt; mRNA -&gt; protein, and that each gene (a segment of DNA) turns into one protein. This is mostly right, but it is a simplification. The relationship between genes and proteins isn’t one-to-one, but many-to-many.
+
+2. Well technically there might be cancers that only affect regulation but don’t change the actual proteins produced. I’m not aware of any though.
+
+3. Never mind exactly what it does for now. Just know that it causes the immune system to focus specifically on cells producing that epitope.
+
+4. If your cells are routinely failing you have an autoimmune disorder.
+
+5. The actual process of T-cell maturation and selection is complicated (like everything else) and I know very little about it.
+
+6. Probably. Maybe CD4+ T-cells do too, sometimes. It’s an area of active research. --&gt;
   </div>
  </body>
 </html>
