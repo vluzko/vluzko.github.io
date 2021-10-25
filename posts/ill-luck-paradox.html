@@ -1,7 +1,7 @@
 <html lang="en">
  <head>
   <title>
-   Template
+   The Ill Luck Paradox
   </title>
   <!-- Load mathjax -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js" type="text/javascript">
@@ -64,12 +64,26 @@
                 color: inherit;
             }
 
+            #main {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #sidebar {
+                width: 100px;
+            }
+
+            #sidebar ul {
+                list-style: none;
+            }
+
             .content h2, h3, h4, h5 {
                 color: rgb(90, 90, 90)
             }
 
             #content0 {
-                margin: 20px;
+                margin-right: 100px;
+                margin-left: 50px;
             }
 
             #blog-index {
@@ -78,6 +92,10 @@
 
             #blog-index li {
                 margin: 1px;
+            }
+
+            #post-index {
+                list-style: none;
             }
   </style>
   <meta charset="utf-8"/>
@@ -105,82 +123,98 @@
     </ul>
    </nav>
   </div>
-  <div class="content" id="content0">
-   <h2>
-    The Ill Luck Paradox
-    <a name="the-ill-luck-paradox">
-    </a>
-   </h2>
-   <ul>
-    <li>
-     <a href="#the-ill-luck-paradox">
-      The Ill Luck Paradox
+  <div id="main">
+   <div class="sidebar" id="sidebar">
+    <ul>
+     <li>
+      <a href="https://github.com/vluzko/">
+       Github
+      </a>
+     </li>
+     <li>
+      <a href="https://www.linkedin.com/in/vincent-luczkow-843aa9b6/">
+       LinkedIn
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="content" id="content0">
+    <h2>
+     The Ill Luck Paradox
+     <a name="the-ill-luck-paradox">
      </a>
-    </li>
-    <li>
-     <a href="#proof">
-      Proof
+    </h2>
+    <ul id="post-index">
+     <li>
+      <a href="#the-ill-luck-paradox">
+       The Ill Luck Paradox
+      </a>
+     </li>
+     <li>
+      <a href="#proof">
+       Proof
+      </a>
+     </li>
+    </ul>
+    <p>
+     This is one of my favorite counterintuitive results. I got it from
+     <a href="https://www.goodreads.com/book/show/2787607-counterexamples-in-probability-and-statistics?ac=1&amp;from_search=true&amp;qid=qjY2rhiM71&amp;rank=4">
+      Counterexamples in Probability and Statistics
      </a>
-    </li>
-   </ul>
-   <p>
-    This is one of my favorite counterintuitive results. I got it from
-    <a href="https://www.goodreads.com/book/show/2787607-counterexamples-in-probability-and-statistics?ac=1&amp;from_search=true&amp;qid=qjY2rhiM71&amp;rank=4">
-     Counterexamples in Probability and Statistics
-    </a>
-    , who got it from
-    <a href="https://www.goodreads.com/book/show/2378167.An_Introduction_to_Probability_Theory_and_Its_Applications_Volume_1?ac=1&amp;from_search=true&amp;qid=Sm7rvHRTMn&amp;rank=3">
-     Feller Volume 1
-    </a>
-    .
-   </p>
-   <p>
-    Here's the short version of the paradox: on average, it should take forever to set new marathon records (or any kind of record). It should also take forever to
-    <em>
-     not
-    </em>
-    set a record.
-   </p>
-   <p>
-    We have a sequence of continuous, iid random variables $\mathcal{X} = [X_1, X_2, \ldots]$. We could think of these as, for instance, the times achieved by an infinite sequence of marathon runners drawn from the same population.
-   </p>
-   <p>
-    Define the random variable $R_w$ as the smallest $i &gt; 1$ such that $X_i &lt; X_1$. That is, it's the number of the first runner to beat the very first runner ($w$ for win). Define $R_l$ similarly, but with $X_i &gt; X_1$ ($l$ for lose): the number of the first runner who
-    <em>
-     doesn't
-    </em>
-    beat the very first runner.
-   </p>
-   <p>
-    Then $E[R_h] = E[R_l] = \infty$, i.e. it will on average take forever for anyone to beat the first runner,
-    <em>
-     and
-    </em>
-    it will on average take forever for anyone to
-    <em>
-     not
-    </em>
-    beat the first runner. And of course $P(R_h = 2 | R_l = 2) = 1$: the second runner is guaranteed to either beat or not beat the first runner.
-   </p>
-   <h3>
-    Proof
-    <a name="proof">
-    </a>
-   </h3>
-   <p>
-    Consider the first $n$ runners. Since they're all identical, the probability that the last runner is the fastest and the first runner is the second fastest is just the number of permutations that start with $(n, 1)$ over the total number of permutations, i.e. it's $(n-2)! / n! = 1 / n(n-1)$. Note that because we assumed our distribution is continuous the probability that any two runners
-    <em>
-     tie
-    </em>
-    is zero, so we can always arrange the runners in an unambiguous order from fastest to slowest.
-   </p>
-   <p>
-    This is the probability that $R_h = n$ so the expectation is:
+     , who got it from
+     <a href="https://www.goodreads.com/book/show/2378167.An_Introduction_to_Probability_Theory_and_Its_Applications_Volume_1?ac=1&amp;from_search=true&amp;qid=Sm7rvHRTMn&amp;rank=3">
+      Feller Volume 1
+     </a>
+     .
+    </p>
+    <p>
+     Here's the short version of the paradox: on average, it should take forever to set new marathon records (or any kind of record). It should also take forever to
+     <em>
+      not
+     </em>
+     set a record.
+    </p>
+    <p>
+     We have a sequence of continuous, iid random variables $\mathcal{X} = [X_1, X_2, \ldots]$. We could think of these as, for instance, the times achieved by an infinite sequence of marathon runners drawn from the same population.
+    </p>
+    <p>
+     Define the random variable $R_w$ as the smallest $i &gt; 1$ such that $X_i &lt; X_1$. That is, it's the number of the first runner to beat the very first runner ($w$ for win). Define $R_l$ similarly, but with $X_i &gt; X_1$ ($l$ for lose): the number of the first runner who
+     <em>
+      doesn't
+     </em>
+     beat the very first runner.
+    </p>
+    <p>
+     Then $E[R_h] = E[R_l] = \infty$, i.e. it will on average take forever for anyone to beat the first runner,
+     <em>
+      and
+     </em>
+     it will on average take forever for anyone to
+     <em>
+      not
+     </em>
+     beat the first runner. And of course $P(R_h = 2 | R_l = 2) = 1$: the second runner is guaranteed to either beat or not beat the first runner.
+    </p>
+    <h3>
+     Proof
+     <a name="proof">
+     </a>
+    </h3>
+    <p>
+     Consider the first $n$ runners. Since they're all identical, the probability that the last runner is the fastest and the first runner is the second fastest is just the number of permutations that start with $(n, 1)$ over the total number of permutations, i.e. it's $(n-2)! / n! = 1 / n(n-1)$. Note that because we assumed our distribution is continuous the probability that any two runners
+     <em>
+      tie
+     </em>
+     is zero, so we can always arrange the runners in an unambiguous order from fastest to slowest.
+    </p>
+    <p>
+     This is the probability that $R_h = n$ so the expectation is:
 $$
 E[R_h] = \sum n \frac{1}{n(n-1)} = \sum \frac{1}{n-1}
 $$
 This is of course a harmonic series, so it diverges and $E[R_h] = \infty$.
-   </p>
+    </p>
+   </div>
   </div>
  </body>
 </html>

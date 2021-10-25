@@ -67,11 +67,15 @@ def process_post(post: Path) -> Tuple[dict, BeautifulSoup]:
     content_div = page.find('div', {'id': 'content0'})
     content_div.append(ast)
 
+    # Rewrite page title
+    title = page.find('title')
+    title.string = meta_data['title']
+
     # Build the index
     heading_tags = [f'h{x}' for x in range(1, 6)]
     headings = content_div.findAll(heading_tags)
 
-    index = ast.new_tag('ul', {'class': 'post-index'})
+    index = ast.new_tag('ul', id='post-index')
     for heading in headings:
         link_text = heading.string.lower().replace(' ', '-')
         internal_link = ast.new_tag('a')
