@@ -146,13 +146,12 @@ def generate_blog_page(post_meta: dict):
     ast = get_template_ast()
     content_div = ast.find('div', {'id': 'content0'})
     posts = ast.new_tag('ul', id='blog-index')
-    posts_list = []
     for k, v in sorted(post_meta.items(), key=lambda x: x[1]['date'], reverse=True):
         link = ast.new_tag('a', href= v['link'])
         link.string = v['title']
         l_item = ast.new_tag('li')
         l_item.append(link)
-        posts_list.append(l_item)
+        posts.append(l_item)
     content_div.append(posts)
 
     title_element = ast.find('title')
