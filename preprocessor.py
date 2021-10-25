@@ -61,11 +61,33 @@ def process_post(post: Path) -> Tuple[dict, BeautifulSoup]:
     text = post.open().read()
     meta_data, remaining = parse_metadata(text)
     html = mistune.markdown(remaining)
-    test_ast = BeautifulSoup(html, 'html.parser')
+    ast = BeautifulSoup(html, 'html.parser')
 
     page = get_template_ast()
     content_div = page.find('div', {'id': 'content0'})
-    content_div.append(test_ast)
+    content_div.append(ast)
+
+    # Build the index
+    heading_tags = [f'h{x}' for x in range(1, 6)]
+    headings = content_div.findAll(heading_tags)
+
+    index = ast.new_tag('ul', {'class': 'post-index'})
+    for heading in headings:
+        link_text = heading.string.lower().replace(' ', '-')
+        internal_link = ast.new_tag('a')
+        internal_link.attrs['href'] = f'#{link_text}'
+        internal_link.string = heading.string
+
+        item = ast.new_tag('li')
+        item.append(internal_link)
+        index.append(item)
+
+        target_link = ast.new_tag('a')
+        target_link.attrs['name'] = link_text
+        heading.append(target_link)
+
+    top = content_div.find('h2')
+    top.insert_after(index)
 
     return meta_data, page
 
@@ -79,6 +101,7 @@ def process_page(post: Path, page_name: str) -> BeautifulSoup:
     content_div = page.find('div', {'id': 'content0'})
     content_div.append(content_ast)
 
+    # Set the title
     title_element = page.find('title')
     title_element.string = page_name
 

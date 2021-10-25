@@ -6,7 +6,7 @@ tags:
   - immunology
   - vaccines
 ---
-[Part 2]({%post_url 2019-10-30-cancer-vaccines-part-2 %}), [Part 3]({%post_url 2019-10-30-cancer-vaccines-part-3 %})
+[Part 2](/posts/personalized-cancer-vaccines-2.html)), [Part 3](/posts/personalized-cancer-vaccines-3.html)
 
 ## Cancer Vaccines 1 - Immunology 001
 
