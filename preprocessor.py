@@ -136,8 +136,8 @@ def generate_post_list():
     all_meta = {}
     for f in BLOG_SOURCE.glob('**/*.md'):
         meta_data, post_ast = process_post(f)
-
-        output_path = Path(OUTPUT_DIR, *f.parts[2:]).with_suffix('.html')
+        start_index = f.parts.index('posts') + 2
+        output_path = Path(OUTPUT_DIR, *f.parts[start_index:]).with_suffix('.html')
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.open('w+').write(post_ast.prettify())
         meta_data['link'] = str(output_path)

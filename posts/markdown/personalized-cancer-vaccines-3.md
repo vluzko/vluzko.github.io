@@ -15,75 +15,53 @@ To recap: the immune system works by killing cells that produce non-self protein
 
 Cancers produce lots of non-self proteins, but avoid the immune system by taking advantage of various mechanisms for blocking immune response.
 
-Checkpoint inhibitor therapy is a set of therapies that block the cancer from blocking immune response, meaning the immune system can go about its merry business of killing tumors. They are very good.
+Checkpoint inhibitor therapy is a set of therapies that block the cancer from blocking immune response, meaning the immune system can go about its merry business of killing tumors.
 
-To start we’re going to backtrack a little and talk about vaccines. Usually vaccines are preventative: you get a vaccine, and it keeps you from getting sick later on. There are many types of vaccine, but they all work in roughly the same way: they expose your immune system to a particular pathogen, the immune system memorizes this pathogen, and the next time it shows up it can react much faster.
+### Vaccines
+Let's backtrack a little and talk about vaccines. Usually vaccines are preventative (prophylactic): you get a vaccine, and it keeps you from getting sick later on. There are many types of vaccine, but they all work in roughly the same way: they expose your immune system to a particular pathogen, the immune system memorizes this pathogen, and the next time it shows up it can react faster, stronger, or both.
 
-Let’s say you want to build a vaccine to virus X. Well, the way a virus works is that it gets into your cells and hijacks it into producing some unusual proteins. Those proteins are of course not self, so the immune system notices this and kills the cells producing those weird proteins.
+Let’s say you want to build a vaccine to virus X. Viruses work by entering your cells and hijacking them into producing some unusual proteins. Those proteins are of course not self, so the immune system notices this and kills the cells producing the weird proteins.
 
-You can speed up this process by introducing the immune system to those proteins ahead of time. You can do this in a variety of ways, but once those proteins are in the body the immune system will notice them, respond to them, remember them (1), and next time it sees those proteins it will respond faster. In particular if you ever encounter the actual virus it will be ready, and the immune response to the virus will be much stronger and faster.
+This process can be sped up by introducing the immune system to these proteins ahead of time. That's a vaccine. This is a simplification, but the key takeaway is that if you introduce the proteins a pathogen produces to the immune system, you prime the immune system to attack that pathogen.
 
-That’s all fine and dandy for things like smallpox that don’t change very much. If you build a vaccine to smallpox you can be confident that 10 years later smallpox won’t have mutated so much that the vaccine is no longer effective (2), (3). 
+But cancer isn’t like a virus. Every cancer is unique. It has its own set of mutations, and a vaccine against one wouldn’t help with any of the others.
 
-But cancer isn’t like that. Every cancer is unique. It has its own set of mutations, and a vaccine against one wouldn’t help with any of the others.
+There are two possible responses to this:
 
-There are two responses to this:
+* Figure out the most common cancer mutations, and vaccinate against those mutations. This is called a shared antigen vaccine.
+* Wait until someone has cancer, then figure out what mutations they have and vaccinate against those. This is a therapeutic vaccine.
 
-    Figure out the most common cancer mutations, and vaccinate against those mutations. This is called a shared antigen vaccine.
-    Wait until someone has cancer, then figure out what mutations they have and vaccinate against those. This is a therapeutic vaccine. (I’ll go more into how these are supposed to work in a bit)
+But the various cancer vaccines of the past didn't really work. Why? Because the cancer is shutting down the immune system.
 
-To be clear: this is super obvious. Immunologists thought of doing this more-or-less as soon as it was possible to think of it.
-
-But the vaccines they tried didn’t work! Totally ineffective! Why?
-
-Because of immune escape (4). A vaccine can’t work if the immune system isn’t working. 
-
-Enter checkpoint inhibitor therapy. Suddenly the immune system is working again, which reopens the possibility of a cancer vaccine.
-
-Both types of vaccine are currently being tested, but I’ll focus on therapeutic vaccines because that’s what I worked on.
-
-First thing: how does a therapeutic vaccine work? I said earlier that vaccines work by training your immune system to recognize particular proteins, but in the case of a therapeutic vaccine those proteins are already there, so why would a vaccine do anything?
-
-The idea is that the immune system is, for whatever reason, having a hard time learning the proteins present in the cancer. Tumors are weird, they’re doing lots of things to inhibit immune system function (besides just using immune checkpoints), so maybe the immune system isn’t figuring out what proteins are present in the tumor.
-
-So instead we put those same proteins somewhere else, away from the tumor where the immune system is still functioning. It builds up a response to those proteins, and then once it’s strong it goes and attacks the tumor. The vaccine is basically functioning as a miniboss to help the immune system level up before it faces the cancer.
+Enter checkpoint inhibitor therapy. Suddenly the immune system is working again (or at least working *better*), which reopens the possibility of a cancer vaccine. I'll focus on therapeutic vaccines, since that's what I worked on.
 
 How do we actually make a therapeutic vaccine? I’ll break it down:
 
-Step 1: Figure out how the cancer is mutated
+### Step 1: Mutation Detection
 
 Remember: a vaccine works by putting non-self proteins into the body, so the immune system will build a response to those proteins and then be extra strong against anything else producing those proteins. The non-self proteins in a cancer are the ones that have been mutated. So we have to figure out what mutations are actually present.
 
 To do this, you get a biopsy of the cancerous tissue and a biopsy of the person’s normal (non-cancerous) tissue. You sequence (5) both of them, i.e. you figure out the exome (6) for both. Then you look at the differences. Those are the mutations (7).
 
-Step 2: Figure out which mutations are “good”
+### Step 2: Mutation Ranking
+A cancer may contain many hundreds of mutations, and vaccinating against all of them is difficult (and maybe undesirable). We need to decide which mutations are the most likely to cause an immune response.
 
-Whereby good I mean “likely to cause an immune response”.
+Remember the T-cell activation pathway from part 1: protein -> epitope -> MHC -> T-cell? Getting the mutations gets us the possible epitopes. It tells us that protein X has a subsequence Y that’s mutated, so if subsequence Y gets turned into an epitope and presented to the MHC, and it binds to the MHC, and that binds to the T-cell, then we could have an immune response.
 
-Remember the pathway back in part 1? Protein -> epitope -> MHC -> T-cell? Getting the mutations only gets us the possible epitopes. It tells us that protein X has a subsequence Y that’s mutated, so if subsequence Y gets turned into an epitope and presented to the MHC, and it binds to the MHC, and that binds to the T-cell, then we could have an immune response.
-
-So personalized cancer vaccine design is essentially a prediction problem: given these possible epitopes, which ones are likely to produce a strong immune response (8)?
+So personalized cancer vaccine design is essentially a prediction problem: given these possible epitopes, which ones are likely to produce a strong immune response?
 
 Some things people have looked at in the literature (no comment on whether or not the group I was with made use of any of these):
 
-    How significant is the mutation? How different is the resulting protein from the original?
-    How much mutated protein is actually present? If the DNA is mutated but it never actually turns into protein, there’s nothing for the immune system to recognize (10)
-    How well do we think the possible epitope will bind to the MHC molecules in the patient (11)? There are some existing algorithms for doing this (that aren’t very good), and some companies have built their own (that are better).
-    Do we think this mutation is important to the cancer’s function? If it’s not then the cancer might just mutate again to lose the mutation, but if it is then maybe the cancer can’t lose the mutation.
+* How "significant" is the mutation (i.e. how physically different is the resulting protein)? How different is the resulting protein from the original?
+* How much mutated protein is actually present? If the DNA is mutated but it never actually turns into protein, there’s nothing for the immune system to recognize
+* How well do we think the possible epitope will bind to the MHC molecules in the patient? There are some existing algorithms for doing this, and some companies have built their own (that are better).
+    * There are some open source algorithms for this (Mhcflurry), some closed source but for sale algorithms (NetMHC), and some in-house predictors built by various companies.
+* Whether the mutation is important to the cancer’s function. If it’s not then the cancer might just mutate again to lose the mutation, but if it is then maybe the cancer can’t lose the mutation.
 
-Step 3: Manufacturing and delivery
-
-I am going to be terrible and not talk about this. The manufacturing and delivery of vaccines is an entire field. How you make it and deliver it is a major component of how well the vaccine functions (not to mention that both present extremely difficult biochemical engineering problems). But! I know nothing about it except for what my company did, and I can’t tell you about that without getting the pants sued off me.
-
-Step 4: Hope nothing goes wrong
-
+### Step 3: Hope
 Okay, you’ve got your vaccine. You administer checkpoint inhibitor therapy to get the immune system working, and then you administer your vaccine.
 
-You know what the cancer does? It mutates again to escape the immune system in some other way. Maybe it loses the genes for expressing class I MHC molecules, so the protein -> epitope -> MHC -> T-cell pathway is just completely broken. Maybe it takes advantage of a different immune checkpoint. Maybe it loses the mutations you targeted and gets new ones instead.
-
-I don’t actually know how common this will be. I’m aware of research directions for preventing it / reacting to it, but I don’t know if they’ll work. And of course if they do the cancer might just come up with something else.
-
-In conclusion: progress has been made, but cancer is an adaptable bitch and our superweapons still need work.
+You know what the cancer does? It mutates again to escape the immune system in some other way. Maybe it loses the genes for expressing class I MHC molecules, so the T-cell activation pathway is just completely broken. Maybe it takes advantage of a different immune checkpoint. Maybe it loses the mutations you targeted and gets new ones instead.
 
 <!-- 1. In particular: immune cells (including T-cells) that have responded to an infection enter a different state. They stick around and are on high alert for some long period of time. It’s not so much that the immune system “memorizes” the infection as it is that there are a bunch of veteran immune cells sitting around waiting for that bastard infection to come back.
 2. Meaning it will still be producing the same proteins your immune system learned to recognize from the vaccine.
