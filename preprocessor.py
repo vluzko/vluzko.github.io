@@ -1,4 +1,5 @@
 """Convert a markdown file to a post"""
+import pdb
 import mistune
 import re
 import yaml
@@ -132,7 +133,7 @@ def get_template_ast() -> BeautifulSoup:
     return ast
 
 
-def generate_post_list():
+def generate_post_list() -> dict:
     all_meta = {}
     for f in BLOG_SOURCE.glob('**/*.md'):
         meta_data, post_ast = process_post(f)
@@ -140,7 +141,7 @@ def generate_post_list():
         output_path = Path(OUTPUT_DIR, *f.parts[start_index:]).with_suffix('.html')
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.open('w+').write(post_ast.prettify())
-        meta_data['link'] = str(output_path)
+        meta_data['link'] = str(Path(*output_path.parts[5:]))
         all_meta[f] = meta_data
 
     return all_meta
