@@ -29,8 +29,11 @@ We draw a collection $\mathcal{X}$ of $n$ iid samples from this model. We have a
 
 We also have a regression algorithm $A: \mathbb{R}^{k \times n} \times DAG(k) \rightarrow \mathcal{F}^k$. It takes the sampled data and the predicted graph, and produces an approximation of each function $f_i$ (so, for instance, $A$ might produce a neural network for each random variable).
 
+Considering $D$ and $A$ together, we have an algorithm that produces structural causal models. We could measure the overall quality of this combination
+
 ### Learning Arrows
-- Generalized Covariance Measure
-- Polynomial bounds for GCM
+In constraint-based causal discovery, the fundamental relationship is conditional dependence. Unfortunately, it is [impossible in general to reliably learn conditional dependence relationships](https://arxiv.org/abs/1804.07203). Fortunately, the same paper introduces a measure of conditional dependence whose core assumption is the presence of a "good enough" regression algorithm. Since we have to assume the a good regression algorithm *anyway*, this is basically free.
+
+The test itself can only distinguish conditional dependence (of $X$ and $Y$ on $Z$) when $X$ and $Y$ have non-zero conditional covariance.
 
 ### $W_1$ distance and covariance
