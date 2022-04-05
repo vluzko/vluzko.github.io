@@ -1,0 +1,1 @@
+I haven't fully decided what to put here. For now it's posts about my research and math I like.

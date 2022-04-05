@@ -1,5 +1,5 @@
 ---
-title: 'Concretization: Conditonal Expectation'
+title: 'Concretization: Conditional Expectation'
 date: 2021-12-09
 tags:
   - math
@@ -14,20 +14,16 @@ $$
 P(A | B) = \frac{P(A \cap B)}{P(B)}
 $$
 
-Instead we use a much more abstract formulation where we condition on an entire $\sigma$-field. This is much more general but also very far from the basic definition, and it's really quite hard to find a good exposition of how we recover usual conditional probability from this abstraction.
+Instead we use a much more abstract formulation where we condition on an entire $\sigma$-field. This is much more general but also very far from the basic definition, and I found it very difficult to find an explanation of how to obtain the basic definition from the general one (eventually I found it in one of the exercises in Billingsley).
 
 ### General Conditional Expectation
-"Normally" the conditional expectation of a random variable $X$ on a random variable $Y$ is defined as:
-$$
-E[X | Y=y] = \int_{-\infty}^{\infty} x P(X=x | Y=y) dx
-$$
-or for discrete random variables as:
+At the intro level, the conditional expectation of a random variable $X$ on a random variable $Y$ is defined as:
 $$
 E[X | Y=y] = \sum_x x P(X=x | Y=y)
 $$
 This is nice and intuitive: we just take the formula for expectation and change the probability to a conditional probability.
 
-*General* conditional expectation is not nearly so nice. We don't even construct it: we use the [Radon-Nikodym theorem](https://en.wikipedia.org/wiki/Radon%E2%80%93Nikodym_theorem) to prove that a random variable with a certain property must exist and be unique.
+*General* conditional expectation is not quite so nice. We don't even construct it: we use the [Radon-Nikodym theorem](https://en.wikipedia.org/wiki/Radon%E2%80%93Nikodym_theorem) to prove that a random variable with a certain property must exist and be unique, and define that random variable as the conditional expectation.
 
 We define the conditional expectation of a random variable $X$ on a $\sigma$-field $\mathcal{G}$ as a random variable $E[X | \mathcal{G}]$ that satisfies:
 $$
@@ -35,9 +31,9 @@ $$
 $$
 for all $\mathcal{G}$ measurable sets $G$. We also require that $E[X | \mathcal{G}]$ be $\mathcal{G}$-measurable.
 
-First, not that $E[X | \mathcal{G}]$ *isn't* being defined as an expectation operator being applied to the random variable $X$. $E[X | \mathcal{G}]$ defines a *single* random variable, it's just a weird variable name (obviously this variable name was picked to be consistent with the usual notion of conditional expectation).
+First, not that $E[X | \mathcal{G}]$ *isn't* being defined as an expectation operator being applied to the random variable $X$. $E[X | \mathcal{G}]$ defines a *single* random variable with a weird notation.
 
-What does this definition actually mean? Suppose we're flipping a coin twice, and $X$ is the sum of the flips (heads is 1 and tails is 0). We want to condition $X$ on the first flip. With out new definition, we need to build a $\sigma$-field that only "sees" the first flip, i.e. one that cannot distinguish between the events $TH$ and $TT$ (and $HH$ and $HT$). If we think in terms of conditioning on a random variable, the groups would be "all events that have the same value for the random variable we're conditioning on". So we define $\mathcal{G}$ as:
+Some intution: Suppose we're flipping a coin twice, and $X$ is the sum of the flips (heads is 1 and tails is 0). We want to condition $X$ on the first flip. With out new definition, we need to build a $\sigma$-field that only sees the first flip, i.e. one that cannot distinguish between the events $TH$ and $TT$ (and $HH$ and $HT$). If we think in terms of conditioning on a random variable, the groups would be "all events that have the same value for the random variable we're conditioning on". So we define $\mathcal{G}$ as:
 $$
     \mathcal{G} := \{\emptyset, \{TH, TT\}, \{HH, HT\}, \Omega\}
 $$
@@ -46,16 +42,18 @@ Note that $X$ *isn't* $\mathcal{G}$-measurable. The pre-image of $0$ under $X$ i
 
 The integral condition looks weird, but really it's just demanding that our conditional expectations satisfy the law of total expectation.
 
+For some alternate intuition: if $X$ is in $L_2$, then $E[X | \mathcal{G}]$ is the Hilbert space projection of $X$ onto $\mathcal{G}$.
+
 ### Conditional probability on a $\sigma$ - field
 Getting conditional probability out of this definition is very easy: the conditional probability of an event $A$ on a $\sigma$-field $\mathcal{G}$ is the conditional expectation of its indicator variable:
 $$
 P(A | \mathcal{G}) := E[I_A | \mathcal{G}]
 $$
-where $I_A$ is the indicator.
+(The indicator variable $I_A$ is $1$ when $A$ occurs and $0$ otherwise. The unconditional expectation of $I_A$ is $P(A)$, and we generalize that property to conditional probability).
 
 Returning to our coin flip example, suppose we want to compute the probability the second flip is heads conditional on the first flip.
 
-Let's actually compute the integrals:
+Let's compute the integrals:
 $$
 \begin{align}
     \int_{\{TH, TT}} E[I_A | \mathcal{G}] dP &= \int_{\{TH, TT\}} I_A dP \\\\
@@ -79,7 +77,9 @@ which is the answer we expect (of course a similar calculation applies to $HH$ a
 
 
 ### Conditioning on an event
-Now we want to condition on a single event $B$. To do this, we condition on the $\sigma$-field generated by the event, i.e. the $\sigma$-field generated by $\{B, B^C\}$. Now let $\omega$ be any element of $B$. Then the conditional expectation of a $X$ on $B$ is $E[X | \sigma(\{B, B^C})]$ evaluated at $\omega$.
+Now we want to condition on a single event $B$. To do this, we condition on the $\sigma$-field generated by the event, i.e. the $\sigma$-field generated by $\{B, B^C\}$. Now let $\omega$ be any element of $B$. Then the conditional expectation of a $X$ on $B$ is $E[X | \sigma(\{B, B^c})]$ evaluated at $\omega$.
+
+In our coin flip example: if we make $B$ the event that the first flip is tails (so $B = \{TT, TH\}$) we can condition on $B$ by taking $E[X | \mathcal{G}]$ and evaluating it at either $TT$ or $TH$ (the answer will be the same either way, since $E[X | \mathcal{G}]$ is $\mathcal{G}$-measurable).
 
 ### Probability conditional on an event
 Finally we arrive at the familiar $P(A | B)$. By our previous definitions, this is:

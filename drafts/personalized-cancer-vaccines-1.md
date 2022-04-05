@@ -14,7 +14,7 @@ For a few years, I worked at Moderna on their personalized cancer vaccine progra
 
 There are two parts of the human immune system: the innate immune system and the adaptive immune system. You can roughly think of these as "general" and "targeted". The adaptive immune system, as its name suggests, adapts to novel pathogens and responds
 
-The rough process is this: every cell (pathogenic or otherwise) produces lots of proteins. Your cells only produce proteins from a very specific list of proteins. This list is determined by your DNA. That’s not all your DNA does, but part of it (the exome) determines what proteins your cells produce (1). So the adaptive immune system goes around looking for proteins that aren’t on the list, and then it murders everything making the forbidden proteins. We’ll refer to things on The List as “self”.
+The rough process is this: every cell (pathogenic or otherwise) produces proteins. Which proteins are produced are determined by your DNA. That’s not all your DNA does, but part of it (the exome) determines what proteins your cells produce (1). So the adaptive immune system goes around looking for proteins that aren’t on the list, and then it murders everything making the forbidden proteins. We’ll refer to things on The List as “self”.
 
 There are a few ways this can happen, but we’ll focus on one of them: deliberate presentation by your cells. Here’s how it works:
 

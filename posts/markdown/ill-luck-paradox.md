@@ -8,7 +8,7 @@ tags:
 ---
 ## The Ill Luck Paradox
 
-This is one of my favorite counterintuitive results. I got it from [Counterexamples in Probability and Statistics](https://www.goodreads.com/book/show/2787607-counterexamples-in-probability-and-statistics?ac=1&from_search=true&qid=qjY2rhiM71&rank=4), who got it from [Feller Volume 1](https://www.goodreads.com/book/show/2378167.An_Introduction_to_Probability_Theory_and_Its_Applications_Volume_1?ac=1&from_search=true&qid=Sm7rvHRTMn&rank=3).
+The ill luck paradox is one of my favorite counterintuitive results. I got it from [Counterexamples in Probability and Statistics](https://www.goodreads.com/book/show/2787607-counterexamples-in-probability-and-statistics?ac=1&from_search=true&qid=qjY2rhiM71&rank=4), who got it from [Feller Volume 1](https://www.goodreads.com/book/show/2378167.An_Introduction_to_Probability_Theory_and_Its_Applications_Volume_1?ac=1&from_search=true&qid=Sm7rvHRTMn&rank=3).
 
 Here's the short version of the paradox: on average, it should take forever to set new marathon records (or any kind of record). It should also take forever to *not* set a record.
 
