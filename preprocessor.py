@@ -141,7 +141,7 @@ def generate_post_list() -> dict:
         output_path = Path(OUTPUT_DIR, *f.parts[start_index:]).with_suffix('.html')
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.open('w+').write(post_ast.prettify())
-        meta_data['link'] = f'/{str(Path(*output_path.parts[5:]))}'
+        meta_data['link'] = f'/{str(Path(*output_path.absolute().parts[5:]))}'
         all_meta[f] = meta_data
 
     return all_meta
