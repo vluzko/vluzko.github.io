@@ -27,9 +27,17 @@ As a general rule, PAC bounds are as good as we can get when we're learning from
 ### Causal Discovery
 In causality theory, we think of causal relationships as a directed acyclic graph between random variables, where an edge from $A$ to $B$ means that $A$ is a direct cause of $B$. Causal discovery is the problem of determining the graph of causal relationships given samples from the random variables you're studying.
 
-- Structural causal model
-- Causal graph
-- Causal discovery
-    - Constraint based methods
+Explaining all the details is rather more than I can do in one blog post, so let's quickly touch some basics.
 
 
+A *structural causal model* $M$ is a set of $k$ real random variables $\mathcal{V}$ indexed by some set $I$, a directed acyclic graph $G$ on $\mathcal{V}$, a noise variable $n_i$ and function $f_i$ for each $v_i \in \mathcal{V}$. Every variable is determined by its function, its parents in the graph, and its noise variable. That is:
+\[
+v_i = f_i(\textrm{parents}(G, v_i), n_i)
+\]
+We might also stipulate that each $f_i$ is a member of some class of functions $\mathcal{F}$ (e.g. all linear functions).
+
+$M$ determines a distribution over all of $\mathcal{V}$, which I will denote $M_O$ ($O$ for "observational distribution"). Causality focuses heavily on the further notions of *intervention* and *counterfactual*, both of which are operations we can perform on structural causal models, but I don't actually need them for this explanation so I won't go into more detail.
+
+*Causal discovery* is the problem of taking samples from $M_O$, and finding a DAG $\hat{G}$ that is as close as possible to the true graph $G$.
+
+In general this is impossible, however we *can* (in theory) recover the *skeleton* of $G$, just not necessarily the direction of every single edge (one of the most interesting results in causality is that we can sometimes discover the direction of *some* of the edges, purely from observation. This is contrary to standard wisdom about always needing to run controlled experiments to establish causality.)
