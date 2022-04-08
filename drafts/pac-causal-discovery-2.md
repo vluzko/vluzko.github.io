@@ -1,5 +1,6 @@
 ---
 title: "PAC Causal Discovery Part 2"
+date: 2022-04-03
 tags:
     - pac-causal-discovery
     - math
