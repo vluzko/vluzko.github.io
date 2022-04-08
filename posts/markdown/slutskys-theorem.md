@@ -25,14 +25,16 @@ where the last only holds when $c \neq 0$
 The proof is extremely easy (and can be easily adapted to any other continuous operation). Since $X_n$ converges in distribution and $Y_n$ converges in probability, $(X_n, Y_n)$ converges in distribution to $(X, c)$. The continuous mapping theorem then implies that continuous functions of $(X_n, Y_n)$ (e.g. addition, multiplication, and division) will preserve the convergence in distribution.
 
 ## Extension with Sample Complexity
-At one point in my work I needed a version of Slutsky's Theorem that worked with sample complexity, specifically where instead of the usual convergence in probability we had some function $f$ telling us how quickly $X_n$ and $Y_n$ converged:
+At one point in my research I needed a version of Slutsky's Theorem that worked with sample complexity. We had some function $f$ telling us how quickly $X_n$ and $Y_n$ converged:
 $$
 \forall \epsilon > 0: \forall \delta > 0: \forall n > f(1/\epsilon, 1/ \delta): P(|X_n - X| > \epsilon) < \delta
 $$
 which immediately implies $X_m \overset{p}{\rightarrow} X$ (notice the similarity to a PAC learning setup, which was the original motivation).
 
-We can't directly use Slutsky's Theorem here, because we lose control over $f$ when we allow for arbitrary continuous functions of $(X_n, Y_n)$. However if we pick a particular class of functions $\mathcal{F}$ that we care about (e.g. we want to preserve a polynomial sample complexity bound), then we can come up with a class of functions that preserves $\mathcal{F}$. For polynomial bounds, we can apply any "polynomial Lipschitz" function, that is any function $g$ that satisfies:
+We can't directly use Slutsky's Theorem here, because we lose control over $f$ when we allow for arbitrary continuous functions of $(X_n, Y_n)$. However if we pick a particular class of functions $\mathcal{F}$ that we care about (e.g. we want to preserve a polynomial sample complexity bound), then we can come up with a class of functions that preserves $\mathcal{F}$.
+
+For polynomial bounds, we can apply any "polynomial Lipschitz" function, that is any function $g$ that satisfies:
 $$
-    d(g(x), g(y)) < p(d(x, y))
+    |g(x) - g(y)| < q(|x - y|)
 $$
-where $p$ is a polynomial (for a normal $\lambda$-Lipschitz function we just set $p(x) = \lambda x$).
+where $q: \mathbb{R} \rightarrow \mathbb{R}$ is a polynomial (a $\lambda$-Lipschitz function is just $q(z) = \lambda z$), which immediately gives us addition, multiplication, and division (as long as the divisor isn't approaching zero).
