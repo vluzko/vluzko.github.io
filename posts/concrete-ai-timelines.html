@@ -1,0 +1,256 @@
+<html lang="en">
+ <head>
+  <title>
+   Concrete AI Timelines
+  </title>
+  <!-- Load mathjax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js" type="text/javascript">
+   MathJax.Hub.Config({
+                extensions: ["tex2jax.js"],
+                jax: ["input/TeX", "output/HTML-CSS"],
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                },
+                "HTML-CSS": { availableFonts: ["TeX"] }
+            });
+  </script>
+  <style>
+   body {
+                font-family: Dejavu Sans, Arial, Verdana, Helvetica, sans-serif;
+            }
+
+            #header {
+                border-bottom: 1px solid black;
+                display: flex;
+                flex-direction: row;
+            }
+
+            #pfp {
+                width: 80px;
+                height: 80px;
+            }
+
+            .navbar ul {
+                display: flex;
+                list-style: none;
+                position: relative;
+                padding: 0;
+                margin: 0;
+                flex-direction: row;
+                width: 100%;
+                height: 100%;
+            }
+
+            .navbar li {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                margin-left: 6px;
+                margin-right: 6px;
+                border: none;
+                color: rgb(90, 90, 90);
+            }
+
+            .navbar a:hover {
+                color: rgb(80, 80, 80);
+                text-decoration: underline;
+                /* background-color: darkgrey; */
+            }
+
+            .navbar a, a:visited{
+                margin: auto;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            #main {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #sidebar {
+                width: 100px;
+            }
+
+            #sidebar ul {
+                list-style: none;
+                color: rgb(90, 90, 90)
+            }
+
+            .content h2, h3, h4, h5 {
+                color: rgb(90, 90, 90)
+            }
+
+            .content p {
+                text-align: justify;
+            }
+
+            #content0 {
+                margin-right: 100px;
+                margin-left: 50px;
+                max-width: 80%;
+            }
+
+            #blog-index {
+                list-style: none;
+            }
+
+            #blog-index li {
+                margin: 1px;
+            }
+
+            #post-index {
+                list-style: none;
+            }
+
+            #post-index li {
+                margin: 1px;
+            }
+  </style>
+  <meta charset="utf-8"/>
+ </head>
+ <body>
+  <div id="header">
+   <img id="pfp" src="/assets/stokes-cartan.png"/>
+   <nav class="navbar" id="navigation">
+    <ul>
+     <li>
+      <a href="/index.html">
+       Home
+      </a>
+     </li>
+     <li>
+      <a href="/blog.html">
+       Blog
+      </a>
+     </li>
+     <li>
+      <a href="/about.html">
+       About
+      </a>
+     </li>
+    </ul>
+   </nav>
+  </div>
+  <div id="main">
+   <div class="sidebar" id="sidebar">
+    <ul>
+     <li>
+      <a href="https://github.com/vluzko/">
+       Github
+      </a>
+     </li>
+     <li>
+      <a href="https://www.linkedin.com/in/vincent-luczkow-843aa9b6/">
+       LinkedIn
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="content" id="content0">
+    <h2>
+     Concrete AI Timelines
+     <a name="concrete-ai-timelines">
+     </a>
+    </h2>
+    <ul id="post-index">
+     <li>
+      <a href="#concrete-ai-timelines">
+       Concrete AI Timelines
+      </a>
+     </li>
+     <li>
+      <a href="#current-questions">
+       Current Questions
+      </a>
+     </li>
+    </ul>
+    <p>
+     I'm generally interested in timelines for AI progress, but in practice the questions asked about them tend to be some mix of long term, poorly specified, and very high-level (e.g. some variant of "When will we have AGI?").
+    </p>
+    <p>
+     So I'm building a list of concrete, fairly near term questions related to AI progress. I've posted some of them on
+     <a href="https://manifold.markets/fold/technical-ai-timelines/markets">
+      Manifold
+     </a>
+     , and will post them on
+     <a href="https://www.metaculus.com/questions/">
+      Metaculus
+     </a>
+     when I have time. If any
+     <a href="https://www.gjopen.com/">
+      GJOpen
+     </a>
+     style forecasting tournament ever opens to user-submitted questions I'll post them there too.
+    </p>
+    <p>
+     Many questions are of the form "When will SOTA on $BENCHMARK pass X?", which is two-dimensional: for every X a forecaster has a distribution over all possible times (including never). Posting these questions on prediction markets requires picking a single value for X, but here I'm going to post the general form.
+    </p>
+    <p>
+     Once I've had time to rewrite my site generator I will make a separate "Timelines" section that goes into more detail on each question.
+    </p>
+    <h3>
+     Current Questions
+     <a name="current-questions">
+     </a>
+    </h3>
+    <ul>
+     <li>
+      When will I be able to run a model that is at least as good as GPT-3 on all benchmarks (from original paper) on a single consumer (&lt;1.5k USD) GPU
+     </li>
+     <li>
+      When will a single trained model reach superhuman performance on all Atari environments
+     </li>
+     <li>
+      When will a single trained model reach superhuman performance on all OpenAI Gym environments
+     </li>
+     <li>
+      Once any model achieves superhuman performance on a competition coding benchmark (natural language description of problem + test cases -&gt; code that passes tests), how long will it be until any company is using a model to write "entry level" code (roughly: a fully automated system that is assigned issues, fixes the bug/implements the feature, and submits PRs)?
+     </li>
+     <li>
+      When will there be realistic AI generated video from natural language descriptions?
+     </li>
+     <li>
+      When will it cost less than 100k USD to train and run a language model that outperforms GPT-3 175B on all benchmarks?
+     </li>
+     <li>
+      When will a single model first achieve 10@k solve rate &gt;= X% on the CodeContests dataset?
+     </li>
+     <li>
+      When will a single model achieve superhuman performance on QuALITY? (https://arxiv.org/pdf/2112.08608.pdf)
+     </li>
+     <li>
+      When will SOTA for Atari 100k pass human median and mean performance across all games?
+     </li>
+     <li>
+      When will SOTA on MMLU STEM questions pass X%?
+     </li>
+     <li>
+      When will SOTA on all MMLU questions pass X%?
+     </li>
+     <li>
+      When will no-calculator SOTA on the MATH dataset pass X% (https://arxiv.org/abs/2103.03874)
+     </li>
+     <li>
+      When will top-1 SOTA on the APPS dataset pass X%? (https://arxiv.org/abs/2105.09938)
+     </li>
+     <li>
+      When will a single model be capable of winning a gold medal on the IMO Grand Challenge?
+     </li>
+     <li>
+      When will a single model achieve results within 10% of SOTA on benchmarks in different domains (e.g. Pong and ImageNet)?
+     </li>
+     <li>
+      When will a language model with a context window &gt;10k tokens achieve SOTA?
+      <ul>
+       <li>
+        Models with no architectural limit on how far back they can remember (e.g. LSTMS) count.
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </div>
+  </div>
+ </body>
+</html>
