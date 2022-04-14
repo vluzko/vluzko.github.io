@@ -8,7 +8,7 @@ tags:
 ## Concrete AI Timelines
 I'm generally interested in timelines for AI progress, but in practice the questions asked about them tend to be some mix of long term, poorly specified, and very high-level (e.g. some variant of "When will we have AGI?").
 
-So I'm building a list of concrete, fairly near term questions related to AI progress. I've posted some of them on [Manifold](https://manifold.markets/fold/technical-ai-timelines/markets), and will post them on [Metaculus](https://www.metaculus.com/questions/) when I have time. If any [GJOpen](https://www.gjopen.com/) style forecasting tournament ever opens to user-submitted questions I'll post them there too.
+So I'm building a list of concrete, fairly near term questions related to AI progress. I've posted some of them on [Manifold](https://manifold.markets/tag/TechnicalAITimelines), and will post them on [Metaculus](https://www.metaculus.com/questions/) when I have time. If any [GJOpen](https://www.gjopen.com/) style forecasting tournament ever opens to user-submitted questions I'll post them there too.
 
 Many questions are of the form "When will SOTA on $BENCHMARK pass X?", which is two-dimensional: for every X a forecaster has a distribution over all possible times (including never). Posting these questions on prediction markets requires picking a single value for X, but here I'm going to post the general form.
 
