@@ -4,10 +4,12 @@ import mistune
 import re
 import yaml
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, element
 from pathlib import Path
 from sys import argv
 from typing import Tuple
+
+from markdown_latex import markdown2html_mistune
 
 
 LOCAL_PREFIX = Path(__file__).parent
@@ -58,43 +60,52 @@ def add_mathjax(ast: BeautifulSoup) -> BeautifulSoup:
     return ast
 
 
+def build_post_index(post_template: BeautifulSoup, content_div: element.Tag) -> BeautifulSoup:
+    heading_tags = [f'h{x}' for x in range(1, 6)]
+    headings = content_div.findAll(heading_tags)
+
+    index_wrapper = post_template.new_tag('div', id='post-index')
+    index = post_template.new_tag('ul', id='post-index')
+    for heading in headings:
+        link_text = heading.string.lower().replace(' ', '-')
+        internal_link = post_template.new_tag('a')
+        internal_link.attrs['href'] = f'#{link_text}'
+        internal_link.string = heading.string
+
+        item = post_template.new_tag('li')
+        item.append(internal_link)
+        index.append(item)
+
+        target_link = post_template.new_tag('a')
+        target_link.attrs['name'] = link_text
+        heading.append(target_link)
+    index_wrapper.append(index)
+    top = post_template.find('div', {'id': 'main'})
+    top.append(index_wrapper)
+    return post_template
+
+
 def process_post(post: Path) -> Tuple[dict, BeautifulSoup]:
     text = post.open().read()
     meta_data, remaining = parse_metadata(text)
     html = mistune.markdown(remaining)
-    ast = BeautifulSoup(html, 'html.parser')
+    html = markdown2html_mistune(remaining)
+    # import pdb
+    # pdb.set_trace()
+    post_content = BeautifulSoup(html, 'html.parser')
 
-    page = get_template_ast()
-    content_div = page.find('div', {'id': 'content0'})
-    content_div.append(ast)
+    post_template = get_template_ast()
+    content_div = post_template.find('div', {'id': 'content0'})
+    content_div.append(post_content)
 
     # Rewrite page title
-    title = page.find('title')
+    title = post_template.find('title')
     title.string = meta_data['title']
 
-    # Build the index
-    heading_tags = [f'h{x}' for x in range(1, 6)]
-    headings = content_div.findAll(heading_tags)
+    # Build post index
+    post_template = build_post_index(post_template, content_div)
 
-    index = ast.new_tag('ul', id='post-index')
-    for heading in headings:
-        link_text = heading.string.lower().replace(' ', '-')
-        internal_link = ast.new_tag('a')
-        internal_link.attrs['href'] = f'#{link_text}'
-        internal_link.string = heading.string
-
-        item = ast.new_tag('li')
-        item.append(internal_link)
-        index.append(item)
-
-        target_link = ast.new_tag('a')
-        target_link.attrs['name'] = link_text
-        heading.append(target_link)
-
-    top = content_div.find('h2')
-    top.insert_after(index)
-
-    return meta_data, page
+    return meta_data, post_template
 
 
 def process_page(post: Path, page_name: str) -> BeautifulSoup:

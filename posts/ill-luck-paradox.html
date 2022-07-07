@@ -87,9 +87,11 @@
             }
 
             #content0 {
+                height: 100vh;
                 margin-right: 100px;
                 margin-left: 50px;
                 max-width: 80%;
+                overflow: scroll;
             }
 
             #blog-index {
@@ -101,6 +103,7 @@
             }
 
             #post-index {
+                width: 100px;
                 list-style: none;
             }
 
@@ -154,18 +157,6 @@
      <a name="the-ill-luck-paradox">
      </a>
     </h2>
-    <ul id="post-index">
-     <li>
-      <a href="#the-ill-luck-paradox">
-       The Ill Luck Paradox
-      </a>
-     </li>
-     <li>
-      <a href="#proof">
-       Proof
-      </a>
-     </li>
-    </ul>
     <p>
      The ill luck paradox is one of my favorite counterintuitive results. I got it from
      <a href="https://www.goodreads.com/book/show/2787607-counterexamples-in-probability-and-statistics?ac=1&amp;from_search=true&amp;qid=qjY2rhiM71&amp;rank=4">
@@ -195,11 +186,7 @@
      beat the very first runner.
     </p>
     <p>
-     Then $E[R_h] = E[R_l] = \infty$, i.e. it will on average take forever for anyone to beat the first runner,
-     <em>
-      and
-     </em>
-     it will on average take forever for anyone to
+     Then $E[R_h] = E[R_l] = \infty$, i.e. it will on average take forever for anyone to beat the first runner, and it will on average take forever for anyone to
      <em>
       not
      </em>
@@ -224,6 +211,20 @@ E[R_h] = \sum n \frac{1}{n(n-1)} = \sum \frac{1}{n-1}
 $$
 This is a harmonic series, so $E[R_h] = \infty$.
     </p>
+   </div>
+   <div id="post-index">
+    <ul id="post-index">
+     <li>
+      <a href="#the-ill-luck-paradox">
+       The Ill Luck Paradox
+      </a>
+     </li>
+     <li>
+      <a href="#proof">
+       Proof
+      </a>
+     </li>
+    </ul>
    </div>
   </div>
  </body>

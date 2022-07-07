@@ -87,9 +87,11 @@
             }
 
             #content0 {
+                height: 100vh;
                 margin-right: 100px;
                 margin-left: 50px;
                 max-width: 80%;
+                overflow: scroll;
             }
 
             #blog-index {
@@ -101,6 +103,7 @@
             }
 
             #post-index {
+                width: 100px;
                 list-style: none;
             }
 
@@ -154,23 +157,6 @@
      <a name="slutsky's-theorem">
      </a>
     </h2>
-    <ul id="post-index">
-     <li>
-      <a href="#slutsky's-theorem">
-       Slutsky's Theorem
-      </a>
-     </li>
-     <li>
-      <a href="#proof">
-       Proof
-      </a>
-     </li>
-     <li>
-      <a href="#extension-with-sample-complexity">
-       Extension with Sample Complexity
-      </a>
-     </li>
-    </ul>
     <p>
      Slutsky's Theorem is a very useful theorem that for some reason doesn't get covered very often (maybe because it follows easily from other results?). It's the convergence in probability version of the theorems about performing arithmetic on limits. The formal statement:
     </p>
@@ -217,6 +203,25 @@ $$
 $$
 where $q: \mathbb{R} \rightarrow \mathbb{R}$ is a polynomial (a $\lambda$-Lipschitz function is just $q(z) = \lambda z$), which immediately gives us addition, multiplication, and division (as long as the divisor isn't approaching zero).
     </p>
+   </div>
+   <div id="post-index">
+    <ul id="post-index">
+     <li>
+      <a href="#slutsky's-theorem">
+       Slutsky's Theorem
+      </a>
+     </li>
+     <li>
+      <a href="#proof">
+       Proof
+      </a>
+     </li>
+     <li>
+      <a href="#extension-with-sample-complexity">
+       Extension with Sample Complexity
+      </a>
+     </li>
+    </ul>
    </div>
   </div>
  </body>
