@@ -87,9 +87,11 @@
             }
 
             #content0 {
+                height: 100vh;
                 margin-right: 100px;
                 margin-left: 50px;
                 max-width: 80%;
+                overflow: scroll;
             }
 
             #blog-index {
@@ -101,6 +103,7 @@
             }
 
             #post-index {
+                width: 100px;
                 list-style: none;
             }
 
@@ -154,18 +157,6 @@
      <a name="concrete-ai-timelines">
      </a>
     </h2>
-    <ul id="post-index">
-     <li>
-      <a href="#concrete-ai-timelines">
-       Concrete AI Timelines
-      </a>
-     </li>
-     <li>
-      <a href="#current-questions">
-       Current Questions
-      </a>
-     </li>
-    </ul>
     <p>
      I'm generally interested in timelines for AI progress, but in practice the questions asked about them tend to be some mix of long term, poorly specified, and very high-level (e.g. some variant of "When will we have AGI?").
     </p>
@@ -218,11 +209,7 @@
       When will a single model first achieve 10@k solve rate &gt;= X% on the CodeContests dataset?
      </li>
      <li>
-      When will a single model achieve superhuman performance on QuALITY? (
-      <a href="https://arxiv.org/pdf/2112.08608.pdf">
-       https://arxiv.org/pdf/2112.08608.pdf
-      </a>
-      )
+      When will a single model achieve superhuman performance on QuALITY? (https://arxiv.org/pdf/2112.08608.pdf)
      </li>
      <li>
       When will SOTA for Atari 100k pass human median and mean performance across all games?
@@ -234,18 +221,10 @@
       When will SOTA on all MMLU questions pass X%?
      </li>
      <li>
-      When will no-calculator SOTA on the MATH dataset pass X% (
-      <a href="https://arxiv.org/abs/2103.03874">
-       https://arxiv.org/abs/2103.03874
-      </a>
-      )
+      When will no-calculator SOTA on the MATH dataset pass X% (https://arxiv.org/abs/2103.03874)
      </li>
      <li>
-      When will top-1 SOTA on the APPS dataset pass X%? (
-      <a href="https://arxiv.org/abs/2105.09938">
-       https://arxiv.org/abs/2105.09938
-      </a>
-      )
+      When will top-1 SOTA on the APPS dataset pass X%? (https://arxiv.org/abs/2105.09938)
      </li>
      <li>
       When will a single model be capable of winning a gold medal on the IMO Grand Challenge?
@@ -260,6 +239,20 @@
         Models with no architectural limit on how far back they can remember (e.g. LSTMS) count.
        </li>
       </ul>
+     </li>
+    </ul>
+   </div>
+   <div id="post-index">
+    <ul id="post-index">
+     <li>
+      <a href="#concrete-ai-timelines">
+       Concrete AI Timelines
+      </a>
+     </li>
+     <li>
+      <a href="#current-questions">
+       Current Questions
+      </a>
      </li>
     </ul>
    </div>
