@@ -9,7 +9,7 @@ tags:
 ---
 ## Slutsky's Theorem
 
-Slutsky's Theorem is a very useful theorem that for some reason doesn't get covered very often (maybe because it follows easily from other results?). It's the convergence in probability version of the theorems about performing arithmetic on limits. The formal statement:
+Slutsky's Theorem is a very useful theorem that for some reason doesn't get covered very often (maybe because it follows easily from other results?). It's the probabilistic version of the standard results on performing arithmetic on limits. The formal statement:
 
 Let $X_n \overset{d}{\rightarrow} X$ and $Y_n \overset{p}{\rightarrow} c$, where $X$ is a random variable and $c$ is a constant. Then:
 
@@ -37,4 +37,4 @@ For polynomial bounds, we can apply any "polynomial Lipschitz" function, that is
 $$
     |g(x) - g(y)| < q(|x - y|)
 $$
-where $q: \mathbb{R} \rightarrow \mathbb{R}$ is a polynomial (a $\lambda$-Lipschitz function is just $q(z) = \lambda z$), which immediately gives us addition, multiplication, and division (as long as the divisor isn't approaching zero).
+where $q: \mathbb{R} \rightarrow \mathbb{R}$ is a polynomial (a $\lambda$-Lipschitz function is just $q(z) = \lambda z$), which immediately gives us addition, multiplication, and division.
