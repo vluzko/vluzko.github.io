@@ -8,8 +8,8 @@ tags:
 ## Concrete AI Timelines
 I'm generally interested in timelines for AI progress, but frequently disappointed by the most discussion. The questions asked about AI progress tend to be some mix of long term, poorly specified, and very high-level (e.g. some variant of "When will we have AGI?"). These questions are *interesting*, but they're too nebulous to be useful for building a real timeline.
 
-I want a much broader set of questions:
-* Covers a wide range of expected time to resolution. There should be questions about expected progress from three months to ten years. (Longer than ten years is probably infeasible for prediction)
+I want a much broader set of questions that:
+* Covers a wide range of expected times to resolution. There should be questions about expected progress in three months and in ten years. (Longer than ten years is probably infeasible for prediction)
 * Covers many different subfields of AI.
 * Uses concrete metrics, ideally based on existing benchmarks.
 * Has well-defined resolution dates.
