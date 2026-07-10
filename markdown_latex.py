@@ -5,7 +5,6 @@ Used from markdown.py
 Shamelessly stolen/modified from IPython
 """
 
-
 from functools import partial
 
 
@@ -38,6 +37,7 @@ class MathInlineParser(InlineParser):
     delimiters from all these varieties, and extracts the type of environment
     in the last case (``foo`` in this example).
     """
+
     BLOCK_MATH_TEX = _dotall(r"(?<!\\)\$\$(.*?)(?<!\\)\$\$")
     BLOCK_MATH_LATEX = _dotall(r"(?<!\\)\\\\\[(.*?)(?<!\\)\\\\\]")
     INLINE_MATH_TEX = _dotall(r"(?<![$\\])\$(.+?)(?<![$\\])\$")
@@ -130,7 +130,6 @@ class IPythonRenderer(HTMLRenderer):
 
     def block_math(self, text):
         return f"$${self.escape_html(text)}$$"
-
 
     def inline_math(self, text):
         return f"${self.escape_html(text)}$"
